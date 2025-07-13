@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diko Sya Miss</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .button-press {
+            animation: press 0.2s;
+        }
+        @keyframes press {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-pink-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white rounded-xl shadow-lg overflow-hidden p-8 text-center">
+        <button id="triggerButton" class="text-3xl font-bold text-purple-800 mb-6 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full transition-colors duration-300">
+            walang pasokkkkkk
+        </button>
+        
+        <div class="mb-8">
+        </div>
+        
+        <div id="content" class="hidden fade-in">
+            <img id="memeImage" src="https://media1.tenor.com/m/bJ5Y_FiDz5QAAAAC/aldendilarichards-aldenrichards-meme.gif" alt="Alden Richards Meme" class="w-full h-auto rounded-lg mb-4 mx-auto">
+            <audio src="araykoo.mp3" controls autoplay
+        </div>
+        
+        <div class="mt-6 text-gray-500 text-sm">
+            Click the button above to reveal the surprise!
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const triggerButton = document.getElementById('triggerButton');
+            const content = document.getElementById('content');
+            const memeImage = document.getElementById('memeImage');
+            const memeAudio = document.getElementById('memeAudio');
+            
+            triggerButton.addEventListener('click', function() {
+                // Add press animation
+                this.classList.add('button-press');
+                
+                // Remove the animation class after it completes
+                setTimeout(() => {
+                    this.classList.remove('button-press');
+                }, 200);
+                
+                // Show the content
+                content.classList.remove('hidden');
+                
+                // Play the audio (note: some browsers may block autoplay)
+                memeAudio.play().catch(e => {
+                    console.log("Autoplay was prevented:", e);
+                    // Show play button for user to click
+                    memeAudio.controls = true;
+                });
+                
+                // Change button text after click
+                this.textContent = "izzzaaa prank";
+                this.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+                this.classList.add('bg-pink-500', 'hover:bg-pink-600');
+            });
+            
+            // Preload the image for better user experience
+            const img = new Image();
+            img.src = memeImage.src;
+        });
+    </script>
+
+</body>
+</html>
+</body>
+</html>
